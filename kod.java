@@ -41,13 +41,42 @@ class Electronics extends PRODUCT
 }
 
 
+class Clothing extends PRODUCT
+{
+    private String size;
+    private String material;
+
+    public Clothing(String name, double basePrice, String size, String material)
+    {
+        super(name, basePrice);
+        this.size = size;
+        this.material = material;
+    }
+
+    @Override
+    public String displayDetails()
+    {
+        super.displayDetails();
+        System.out.println("Size: " + size);
+        System.out.println("Material: " + material);
+        return name + ", " + basePrice + ", " + size + ", " + material;
+
+    }
+}
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<Product> inventory = new ArrayList<>();
 
         Electronics telephone = new Electronics("telephone", 4200.0, "ijapuszko", 18);
+        Clothing tee = new Clothing("tshirt", 12.0, "XS", "Polyester");
 
+        inventory.add(tee);
         inventory.add(telephone);
+
+        for (Product product : inventory) {
+            product.displayDetails();
+            System.out.println("-------------------");
+        }
     }
 }

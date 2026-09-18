@@ -64,7 +64,7 @@ class Odziez extends Produkt
     }
 }
 
-class Program {
+public class Program {
     public static void main(String[] args) {
         ArrayList<Produkt> magazyn = new ArrayList<>();
 

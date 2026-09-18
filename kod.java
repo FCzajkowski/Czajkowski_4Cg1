@@ -1,81 +1,81 @@
 import java.util.ArrayList;
 
-class PRODUCT
+class Produkt
 {
-    protected String name;
-    protected double basePrice;
+    protected String nazwa;
+    protected double cenaBazowa;
 
-    public Product(String name, double basePrice)
+    public Produkt(String nazwa, double cenaBazowa)
     {
-        this.basePrice = basePrice; 
-        this.name = name;
+        this.cenaBazowa = cenaBazowa; 
+        this.nazwa = nazwa;
     }
 
-    public String displayDetails()
+    public String wyswietlSzczegoly()
     {
-        System.out.println("Name: " + name);
-        System.out.println("Base Price: $" + basePrice);
-        return name + ", " + basePrice;
+        System.out.println("Nazwa: " + nazwa);
+        System.out.println("Cena bazowa: " + cenaBazowa + " zl");
+        return nazwa + ", " + cenaBazowa;
     }
 }
 
-class Electronics extends PRODUCT
+class Elektronika extends Produkt
 {
-    private String manufacturer;
-    private int warrantyMonths;
+    private String producent;
+    private int miesiaceGwarancji;
 
-    public Electronics(String name, double basePrice, String manufacturer, int warrantyMonths) {
-        super(name, basePrice);
-        this.manufacturer = manufacturer;
-        this.warrantyMonths = warrantyMonths;
+    public Elektronika(String nazwa, double cenaBazowa, String producent, int miesiaceGwarancji) {
+        super(nazwa, cenaBazowa);
+        this.producent = producent;
+        this.miesiaceGwarancji = miesiaceGwarancji;
     };
 
     @Override
-    public String displayDetails()
+    public String wyswietlSzczegoly()
     {
-        super.displayDetails();
-        System.out.println("Manufacturer: " + manufacturer);
-        System.out.println("Warranty: " + warrantyMonths + " months");
-        return name + ", " + basePrice + ", " + manufacturer + ", " + warrantyMonths;
+        super.wyswietlSzczegoly();
+        System.out.println("Producent: " + producent);
+        System.out.println("Gwarancja: " + miesiaceGwarancji + " miesiecy");
+        return nazwa + ", " + cenaBazowa + ", " + producent + ", " + miesiaceGwarancji;
     }
 }
 
 
-class Clothing extends PRODUCT
+class Odziez extends Produkt
 {
-    private String size;
+    private String rozmiar;
     private String material;
 
-    public Clothing(String name, double basePrice, String size, String material)
+    public Odziez(String nazwa, double cenaBazowa, String rozmiar, String material)
     {
-        super(name, basePrice);
-        this.size = size;
+        super(nazwa, cenaBazowa);
+        this.rozmiar = rozmiar;
         this.material = material;
     }
 
     @Override
-    public String displayDetails()
+    public String wyswietlSzczegoly()
     {
-        super.displayDetails();
-        System.out.println("Size: " + size);
+        super.wyswietlSzczegoly();
+        System.out.println("Rozmiar: " + rozmiar);
         System.out.println("Material: " + material);
-        return name + ", " + basePrice + ", " + size + ", " + material;
+        return nazwa + ", " + cenaBazowa + ", " + rozmiar + ", " + material;
 
     }
 }
 
-public class Main {
+class Program {
     public static void main(String[] args) {
-        ArrayList<Product> inventory = new ArrayList<>();
+        ArrayList<Produkt> magazyn = new ArrayList<>();
 
-        Electronics telephone = new Electronics("telephone", 4200.0, "ijapuszko", 18);
-        Clothing tee = new Clothing("tshirt", 12.0, "XS", "Polyester");
+        Elektronika telefon = new Elektronika("telefon", 4200.0, "ijapuszko", 18);
+        Odziez koszulka = new Odziez("koszulka", 12.0, "XS", "Poliester");
 
-        inventory.add(tee);
-        inventory.add(telephone);
+        magazyn.add(koszulka);
+        magazyn.add(telefon);
 
-        for (Product product : inventory) {
-            product.displayDetails();
+        for (Produkt produkt : magazyn) {
+            produkt.wyswietlSzczegoly();
             System.out.println("-------------------");
         }
     }
